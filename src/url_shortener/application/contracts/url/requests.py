@@ -2,10 +2,10 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
-class GetFullUrlByShortUrl:
+class GetFullUrlByShortUrlRequest:
     short_url: str
 
 
 @dataclass(frozen=True)
-class CreateShortUrl:
+class CreateShortUrlRequest:
     full_url: str
