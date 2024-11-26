@@ -18,7 +18,7 @@ class FullUrl(ValueObject):
         r'(?:/?|[/?]S+)$'
 
         if not isinstance(self.__full_url, str):
-            raise ValueObjectValidationError(f'Full url must be a str, not {type(self.__id)}')
+            raise ValueObjectValidationError(f'Full url must be a str, not {type(self.__full_url)}')
 
         if len(self.__full_url) > 2083:
             raise ValueObjectValidationError(f'Length of full url must be less then 2083 symbols, now length is f{len(self.__full_url)}')
