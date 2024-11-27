@@ -1,6 +1,8 @@
 import asyncio
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from logging import (DEBUG, FileHandler, StreamHandler, basicConfig, getLogger,
+                     info)
 from urllib.parse import parse_qs, urlparse
 
 from url_shortener.application.contracts.url.requests import (
@@ -14,7 +16,27 @@ from url_shortener.presentation.web_api.create_short_url import \
 from url_shortener.presentation.web_api.get_full_url_by_short_url import \
     get_full_url_by_short_url
 
+logger = getLogger(__name__)
+
 DictionaryDatabase = dict()
+
+
+def configure_logging(level=DEBUG):
+    format = '[%(asctime)s.%(msecs)03d] %(module)15s:%(lineno)-3d %(levelname)-7s - %(message)s'
+    datefmt = '%Y-%m-%d %H:%M:%S'
+
+    file_handler = FileHandler('logs.log')
+    file_handler.setLevel(level)
+
+    console_handler = StreamHandler()
+    console_handler.setLevel(level)
+
+    basicConfig(
+        level=level,
+        datefmt=datefmt,
+        format=format,
+        handlers=[file_handler, console_handler]
+                        )
 
 
 class HTTPRequestHandler(BaseHTTPRequestHandler):
@@ -141,6 +163,10 @@ def create_app(
         port=port,
         ioc=ioc,
     )
+
+    configure_logging()
+
+    info('Create application')
 
     return http_server
 
