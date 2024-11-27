@@ -31,10 +31,16 @@ class DictionaryShortUrlRepository(ShortUrlRepository):
         else:
             raise AlreadyExists('This url already exists in database')
 
-    async def get_by_short_url(self, short_url: ShortUrl) -> ShortUrl:
-        if short_url in self.database.values():
+    async def get_by_short_url(self, short_url: ShortUrl) -> FullUrl:
+        is_short_url_in_database = False
+        for full_short_urls in self.database.values():
+            if short_url.short_url in full_short_urls:
+                is_short_url_in_database = True
+                break
+
+        if is_short_url_in_database:
             for key, value in self.database.items():
-                if value.short_url == short_url:
-                    return value.full_url
+                if value[1] == short_url.short_url:
+                    return value[0]
         else:
             raise DoesNotExists('This short url does not exists in database')

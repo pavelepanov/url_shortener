@@ -5,7 +5,7 @@ from url_shortener.domain.value_objects.full_url import FullUrl
 
 
 class ShortUrlRepository(Protocol):
-    async def get_by_short_url(self, short_url: ShortUrl) -> ShortUrl:
+    async def get_by_short_url(self, short_url: ShortUrl) -> FullUrl:
         raise NotImplementedError
 
     async def create(self, full_url: FullUrl, short_url: str) -> ShortUrl:

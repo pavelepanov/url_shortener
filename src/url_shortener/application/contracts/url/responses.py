@@ -7,3 +7,7 @@ class ShortUrlResponse:
     full_url: str
     short_url: str
 
+
+@dataclass(frozen=True)
+class FullUrlResponse:
+    full_url: str

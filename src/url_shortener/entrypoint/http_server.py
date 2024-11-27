@@ -67,7 +67,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             response = {
                 'message': 'This is a GET request',
                 'path': url.path,
-                'query_params': response_presenation
+                'query_params': response_presenation.full_url
             }
 
             self.send_response(200)
