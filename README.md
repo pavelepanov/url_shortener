@@ -27,8 +27,8 @@
 2. Получить полную ссылку по короткой ссылке. Короткую ссылку можно получить после её создания \
 ```url "http://localhost:8080/short_url?full_url=http://my_site/37d007"```
 
-![post](/docs/POST.jpg "POST example")
-![get](/docs/GET.jpg "GET example")
+![post_rout](/docs/POST.jpg "POST example")
+![get_rout](/docs/GET.jpg "GET example")
 
 ## О проекте
 Реализовал слоистую архитектуру, выделив 4 уровня:
