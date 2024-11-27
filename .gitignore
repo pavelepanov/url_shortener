@@ -11,3 +11,6 @@ venv/
 
 # IDE
 .idea
+
+# Ruff
+.ruff_cache

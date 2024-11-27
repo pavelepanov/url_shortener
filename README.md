@@ -18,3 +18,6 @@
 ```curl -X POST -d '{"key": "http://localhost:8080"}' -H "Content-Type: application/json" http://localhost:8080```
 2. Получить полную ссылку по короткой ссылке. Короткую ссылку можно получить после её создания \
 ```curl "http://localhost:8080/greet?full_url=my_site/37d007"```
+
+![post](/docs/POST.jpg "POST example")
+![get](/docs/GET.jpg "GET example")
