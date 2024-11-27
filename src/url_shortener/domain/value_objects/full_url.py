@@ -10,12 +10,7 @@ class FullUrl(ValueObject):
         self._validate()
 
     def _validate(self) -> None:
-        url_pattern = r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?.)+(?:[A-Z]{2,6}.?|[A-Z0-9-]{2,}.?)|'  # доменное имя
-        r'localhost|'  # localhost
-        r'd{1,3}.d{1,3}.d{1,3}.d{1,3}|'  # IPv4
-        r'[?[A-F0-9]*:[A-F0-9:]+]?)'  # IPv6
-        r'(?::d+)?'  # port [optional]
-        r'(?:/?|[/?]S+)$'
+        url_pattern = r'(https?://[\S]+)'
 
         if not isinstance(self.__full_url, str):
             raise ValueObjectValidationError(f'Full url must be a str, not {type(self.__full_url)}')
