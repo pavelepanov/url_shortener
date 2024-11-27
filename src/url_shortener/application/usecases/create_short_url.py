@@ -1,7 +1,9 @@
-from url_shortener.application.contracts.url.requests import CreateShortUrlRequest
+from url_shortener.application.contracts.url.requests import \
+    CreateShortUrlRequest
 from url_shortener.application.contracts.url.responses import ShortUrlResponse
 from url_shortener.application.protocols.interactor import Interactor
-from url_shortener.domain.domain_services.create_short_url import create_short_url
+from url_shortener.domain.domain_services.create_short_url import \
+    create_short_url
 from url_shortener.domain.repositories.short_url import ShortUrlRepository
 from url_shortener.domain.value_objects.full_url import FullUrl
 

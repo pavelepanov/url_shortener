@@ -1,4 +1,5 @@
-from url_shortener.application.contracts.url.requests import GetFullUrlByShortUrlRequest
+from url_shortener.application.contracts.url.requests import \
+    GetFullUrlByShortUrlRequest
 from url_shortener.application.contracts.url.responses import ShortUrlResponse
 from url_shortener.entrypoint.ioc import IoC
 

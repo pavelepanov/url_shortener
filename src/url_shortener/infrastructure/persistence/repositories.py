@@ -2,7 +2,8 @@ from url_shortener.application.protocols.id_generator import UUIDGenerator
 from url_shortener.domain.entities.short_url import ShortUrl, short_url_factory
 from url_shortener.domain.repositories.short_url import ShortUrlRepository
 from url_shortener.domain.value_objects.full_url import FullUrl
-from url_shortener.infrastructure.errors.error import AlreadyExists, DoesNotExists
+from url_shortener.infrastructure.errors.error import (AlreadyExists,
+                                                       DoesNotExists)
 
 
 class DictionaryShortUrlRepository(ShortUrlRepository):

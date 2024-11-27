@@ -1,4 +1,5 @@
-from url_shortener.application.contracts.url.requests import GetFullUrlByShortUrlRequest
+from url_shortener.application.contracts.url.requests import \
+    GetFullUrlByShortUrlRequest
 from url_shortener.application.contracts.url.responses import FullUrlResponse
 from url_shortener.application.protocols.interactor import Interactor
 from url_shortener.domain.repositories.short_url import ShortUrlRepository

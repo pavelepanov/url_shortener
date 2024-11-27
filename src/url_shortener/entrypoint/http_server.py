@@ -9,7 +9,8 @@ from url_shortener.entrypoint.ioc import IoC
 from url_shortener.infrastructure.adapters.short_url_id_generator_uuid import \
     UUIDShortUrlGenerator
 from url_shortener.infrastructure.config import DomainUrl
-from url_shortener.presentation.web_api.create_short_url import create_short_url
+from url_shortener.presentation.web_api.create_short_url import \
+    create_short_url
 from url_shortener.presentation.web_api.get_full_url_by_short_url import \
     get_full_url_by_short_url
 
@@ -71,8 +72,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
 
             response = {
                 "message": "This is a GET request",
-                "path": url.path,
-                "query_params": response_presenation.full_url,
+                "full_url": response_presenation.full_url,
             }
 
             self.send_response(200)
