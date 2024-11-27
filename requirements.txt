@@ -16,5 +16,5 @@ pyflakes==3.2.0
 python-dotenv==1.0.1
 PyYAML==6.0.2
 ruff==0.8.0
--e git+ssh://git@github.com/pavelepanov/url_shortener.git@7b4dc1f0e18e4abf18d3a46cf03b2e83da542820#egg=url_shortener
+-e git+ssh://git@github.com/pavelepanov/url_shortener.git@1ecbf97005297f1614ad6f559d4d05f8a912eb29#egg=url_shortener
 virtualenv==20.28.0
