@@ -25,7 +25,7 @@
 1. Создать короткую ссылку на основе полной ссылки и получить короткую ссылку\
 ```curl -X POST -d '{"key": "http://localhost:8080"}' -H "Content-Type: application/json" http://localhost:8080/short_url```
 2. Получить полную ссылку по короткой ссылке. Короткую ссылку можно получить после её создания \
-```curl "http://localhost:8080/short_url?full_url=my_site/37d007"```
+```url "http://localhost:8080/short_url?full_url=http://my_site/37d007"```
 
 ![post](/docs/POST.jpg "POST example")
 ![get](/docs/GET.jpg "GET example")

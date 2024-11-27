@@ -51,7 +51,6 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
                 }
 
                 response = {
-                    "message": "This is a POST request",
                     "short_url": post_data_answer['short_url'],
                 }
 
@@ -88,7 +87,6 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
                 )
 
                 response = {
-                    "message": "This is a GET request",
                     "full_url": response_presenation.full_url,
                 }
 
