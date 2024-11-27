@@ -5,6 +5,7 @@ from url_shortener.infrastructure.persistence.repositories import DictionaryShor
 from url_shortener.application.usecases.create_short_url import CreateShortUrl
 from url_shortener.infrastructure.config import DomainUrl
 from url_shortener.infrastructure.adapters.short_url_id_generator_uuid import UUIDShortUrlGenerator
+from url_shortener.application.usecases.get_by_short_url import GetByShortUrl
 
 
 class IoC(InteractorFactory):
@@ -17,6 +18,12 @@ class IoC(InteractorFactory):
         yield CreateShortUrl(
             short_url_repository=self.short_url_repository,
             base_url=self.domain_url,
+        )
+
+    @contextmanager
+    def get_full_url_by_short_url(self) -> GetByShortUrl:
+        yield GetByShortUrl(
+            short_url_repository=self.short_url_repository,
         )
 
 

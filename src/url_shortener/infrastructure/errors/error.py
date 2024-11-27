@@ -15,5 +15,10 @@ class InfrastructureError(Exception):
     def __str__(self):
         return self.message
 
+
 class AlreadyExists(InfrastructureError):
+    ...
+
+
+class DoesNotExists(InfrastructureError):
     ...

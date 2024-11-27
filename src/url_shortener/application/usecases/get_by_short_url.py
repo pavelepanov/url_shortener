@@ -5,7 +5,7 @@ from url_shortener.domain.repositories.short_url import ShortUrlRepository
 from url_shortener.domain.value_objects.short_url import ShortUrl
 
 
-class GetByFullUrl(Interactor[GetFullUrlByShortUrlRequest, ShortUrlResponse]):
+class GetByShortUrl(Interactor[GetFullUrlByShortUrlRequest, ShortUrlResponse]):
     def __init__(self, short_url_repository: ShortUrlRepository):
         self.short_url_repository = short_url_repository
 
@@ -15,5 +15,5 @@ class GetByFullUrl(Interactor[GetFullUrlByShortUrlRequest, ShortUrlResponse]):
         return ShortUrlResponse(
             id=short_url.id.id,
             full_url=short_url.full_url.full_url,
-            short_url=short_url.short_url.short_url,
+            short_url=short_url.short_url,
         )
