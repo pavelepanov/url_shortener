@@ -20,7 +20,7 @@
 ```python3 -m url_shortener.entrypoint.http_server ```
 
 ## Как тестировать?
-Можно выбрать, к примеру, postman или напрямую через терминал с помощью curl
+Можно выбрать, к примеру, postman или посылать запросы напрямую через терминал с помощью curl
 ### Пример с curl
 1. Создать короткую ссылку на основе полной ссылки и получить короткую ссылку\
 ```curl -X POST -d '{"key": "http://localhost:8080"}' -H "Content-Type: application/json" http://localhost:8080```
