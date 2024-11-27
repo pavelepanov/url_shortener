@@ -51,29 +51,29 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
 
             if path == '/short_url':
                 self.send_response(200)
-                self.send_header("Content-type", "application/json")
+                self.send_header('Content-type', 'application/json')
                 self.end_headers()
 
-                content_length = int(self.headers["Content-Length"])
+                content_length = int(self.headers['Content-Length'])
                 post_data = self.rfile.read(content_length)
-                post_data_str = post_data.decode("utf-8")
+                post_data_str = post_data.decode('utf-8')
 
                 data = json.loads(post_data_str)
 
                 response_presenation = asyncio.run(
                     create_short_url(
-                        ioc=self.ioc, request=CreateShortUrlRequest(data["key"])
+                        ioc=self.ioc, request=CreateShortUrlRequest(data['key'])
                     )
                 )
 
                 post_data_answer = {
-                    "id": str(response_presenation.id),
-                    "full_url": response_presenation.full_url,
-                    "short_url": response_presenation.short_url,
+                    'id': str(response_presenation.id),
+                    'full_url': response_presenation.full_url,
+                    'short_url': response_presenation.short_url,
                 }
 
                 response = {
-                    "short_url": post_data_answer['short_url'],
+                    'short_url': post_data_answer['short_url'],
                 }
 
                 self.wfile.write(json.dumps(response).encode("utf-8"))
@@ -91,8 +91,8 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_response(500)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            error_message = {"error": "Internal Server Error", "details": str(e)}
-            self.wfile.write(json.dumps(error_message).encode("utf-8"))
+            error_message = {'error': 'Internal Server Error', 'details': str(e)}
+            self.wfile.write(json.dumps(error_message).encode('utf-8'))
 
     def do_GET(self):
         try:
@@ -104,18 +104,18 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
                 response_presenation = asyncio.run(
                     get_full_url_by_short_url(
                         ioc=self.ioc,
-                        request=GetFullUrlByShortUrlRequest(query_params["full_url"][0]),
+                        request=GetFullUrlByShortUrlRequest(query_params['full_url'][0]),
                     )
                 )
 
                 response = {
-                    "full_url": response_presenation.full_url,
+                    'full_url': response_presenation.full_url,
                 }
 
                 self.send_response(200)
-                self.send_header("Content-Type", "application/json")
+                self.send_header('Content-Type', 'application/json')
                 self.end_headers()
-                self.wfile.write(json.dumps(response).encode("utf-8"))
+                self.wfile.write(json.dumps(response).encode('utf-8'))
             else:
                 self.send_response(404)
                 response = {
@@ -129,10 +129,10 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
 
         except Exception as e:
             self.send_response(500)
-            self.send_header("Content-Type", "application/json")
+            self.send_header('Content-Type', 'application/json')
             self.end_headers()
-            error_message = {"error": "Internal Server Error", "details": str(e)}
-            self.wfile.write(json.dumps(error_message).encode("utf-8"))
+            error_message = {'error': 'Internal Server Error', 'details': str(e)}
+            self.wfile.write(json.dumps(error_message).encode('utf-8'))
 
 
 class HTTPServerWithIoc(HTTPServer):
@@ -144,7 +144,7 @@ class HTTPServerWithIoc(HTTPServer):
 def get_http_server(server_class, handler_class, port, ioc):
     server_address = ("", port)
     httpd = server_class(server_address, handler_class, ioc)
-    print(f"Starting http server on {port}...")
+    print(f'Starting http server on {port}...')
     return httpd
 
 

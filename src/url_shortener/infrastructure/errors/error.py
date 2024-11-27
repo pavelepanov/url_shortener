@@ -6,8 +6,8 @@ class InfrastructureError(Exception):
 
         if message is None:
             assert hasattr(
-                self, "message"
-            ), "Message must be specified in the constructor or class var"
+                self, 'message'
+            ), 'Message must be specified in the constructor or class var'
 
         else:
             self.message = message

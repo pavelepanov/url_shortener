@@ -31,7 +31,7 @@ class DictionaryShortUrlRepository(ShortUrlRepository):
             return short_url_entity
 
         else:
-            raise AlreadyExists("This url already exists in database")
+            raise AlreadyExists('This url already exists in database')
 
     async def get_by_short_url(self, short_url: ShortUrl) -> FullUrl:
         is_short_url_in_database = False
@@ -45,4 +45,4 @@ class DictionaryShortUrlRepository(ShortUrlRepository):
                 if value[1] == short_url.short_url:
                     return value[0]
         else:
-            raise DoesNotExists("This short url does not exists in database")
+            raise DoesNotExists('This short url does not exists in database')

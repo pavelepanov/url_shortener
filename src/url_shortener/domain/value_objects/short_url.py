@@ -1,6 +1,9 @@
+import logging
 
 from url_shortener.domain.common.errors import ValueObjectValidationError
 from url_shortener.domain.common.value_object import ValueObject
+
+logger = logging.getLogger(__name__)
 
 
 class ShortUrl(ValueObject):
@@ -9,10 +12,13 @@ class ShortUrl(ValueObject):
         self._validate()
 
     def _validate(self) -> None:
-        if not isinstance(self.__short_url, str):
-            raise ValueObjectValidationError(
-                f"Full url must be a str, not {type(self.__short_url)}"
-            )
+        try:
+            if not isinstance(self.__short_url, str):
+                raise ValueObjectValidationError(
+                    f'Full url must be a str, not {type(self.__short_url)}'
+                )
+        except Exception as e:
+            logging.exception('Short url did not create because %s' % e)
 
     @property
     def short_url(self):
