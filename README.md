@@ -10,11 +10,14 @@
 
 1. Склонировать проект \
 ```git clone https://github.com/pavelepanov/url_shortener```
-2. Создать виртуальное окружение \
-```python3 -m venv venv```
+2. Создать виртуальное окружение и активировать его \
+```python3.12 -m venv venv``` \
+```source venv/bin/activate```
 3. Установить зависимости \
 ```pip install -r requirements.txt```
-4. Создать переменную окружения для названия сервиса-сократителя. Для простоты разворачивания добавил в .env переменную окружения и подгрузил её в конфиг. *Этот пункт можно пропустить* \
+4. Поставить пакет в editable режим \
+```pip install -e .```
+4. **Этот пункт можно пропустить**. Создать переменную окружения для названия сервиса-сократителя. Для простоты разворачивания добавил в .env переменную окружения и подгрузил её в конфиг. \
 ```DOMAIN_URL=```
 5. Запустить проект, как распространяемый пакет \
 ```python3 -m url_shortener.entrypoint.http_server ```
@@ -25,7 +28,7 @@
 1. Создать короткую ссылку на основе полной ссылки и получить короткую ссылку\
 ```curl -X POST -d '{"key": "http://localhost:8080"}' -H "Content-Type: application/json" http://localhost:8080/short_url```
 2. Получить полную ссылку по короткой ссылке. Короткую ссылку можно получить после её создания \
-```url "http://localhost:8080/short_url?full_url=http://my_site/37d007"```
+```curl "http://localhost:8080/short_url?full_url=http://my_site/37d007"```
 
 ![post_rout](/documentation/POST.jpg "POST rout example")
 ![get_rout](/documentation/GET.jpg "GET rout example")
