@@ -1,9 +1,8 @@
 from uuid import UUID
 
 from url_shortener.domain.common.entity import Entity
-from url_shortener.domain.value_objects.short_url_id import ShortUrlId
 from url_shortener.domain.value_objects.full_url import FullUrl
-from url_shortener.domain.domain_services.create_short_url import create_short_url
+from url_shortener.domain.value_objects.short_url_id import ShortUrlId
 
 
 class ShortUrl(Entity):
@@ -14,9 +13,9 @@ class ShortUrl(Entity):
 
 
 def short_url_factory(
-        id: UUID,
-        full_url: str,
-        short_url: str,
+    id: UUID,
+    full_url: str,
+    short_url: str,
 ) -> ShortUrl:
     return ShortUrl(
         id=ShortUrlId(id),

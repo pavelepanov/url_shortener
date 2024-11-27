@@ -11,9 +11,7 @@ class DomainUrl:
     domain_url: str
 
     @staticmethod
-    def from_env() -> 'DomainUrl':
-        domain_url = getenv('DOMAIN_URL')
+    def from_env() -> "DomainUrl":
+        domain_url = getenv("DOMAIN_URL")
 
         return DomainUrl(str(domain_url))
-
-

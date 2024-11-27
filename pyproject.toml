@@ -5,4 +5,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "url_shortener"
 version = "0.1"
-dependencies = []
+
+[tool.ruff]
+line-length = 79
+src = ["src"]
+
+[tool.isort]
+line_length = 88
