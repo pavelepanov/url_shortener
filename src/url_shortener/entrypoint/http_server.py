@@ -48,7 +48,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
 
             response = {
                 "message": "This is a POST request",
-                "data_received": post_data_answer,
+                "short_url": post_data_answer['short_url'],
             }
 
             self.wfile.write(json.dumps(response).encode("utf-8"))
