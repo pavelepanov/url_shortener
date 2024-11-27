@@ -1,9 +1,13 @@
+import logging
+
 from url_shortener.application.contracts.url.requests import \
     GetFullUrlByShortUrlRequest
 from url_shortener.application.contracts.url.responses import FullUrlResponse
 from url_shortener.application.protocols.interactor import Interactor
 from url_shortener.domain.repositories.short_url import ShortUrlRepository
 from url_shortener.domain.value_objects.short_url import ShortUrl
+
+logger = logging.getLogger(__name__)
 
 
 class GetByShortUrl(Interactor[GetFullUrlByShortUrlRequest, FullUrlResponse]):
@@ -14,6 +18,9 @@ class GetByShortUrl(Interactor[GetFullUrlByShortUrlRequest, FullUrlResponse]):
         full_url = await self.short_url_repository.get_by_short_url(
             short_url=ShortUrl(request.short_url)
         )
+
+        logging.info('Full url was got')
+
         return FullUrlResponse(
             full_url=str(full_url),
         )

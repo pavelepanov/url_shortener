@@ -1,3 +1,5 @@
+import logging
+
 from url_shortener.application.contracts.url.requests import \
     CreateShortUrlRequest
 from url_shortener.application.contracts.url.responses import ShortUrlResponse
@@ -7,6 +9,7 @@ from url_shortener.domain.domain_services.create_short_url import \
 from url_shortener.domain.repositories.short_url import ShortUrlRepository
 from url_shortener.domain.value_objects.full_url import FullUrl
 
+logger = logging.getLogger(__name__)
 
 class CreateShortUrl(Interactor[CreateShortUrlRequest, ShortUrlResponse]):
     def __init__(self, short_url_repository: ShortUrlRepository, base_url: str):
@@ -22,6 +25,8 @@ class CreateShortUrl(Interactor[CreateShortUrlRequest, ShortUrlResponse]):
             full_url=FullUrl(request.full_url),
             short_url=short_url_service,
         )
+
+        logging.info('Short url was created')
 
         return ShortUrlResponse(
             id=short_url.id.id,
